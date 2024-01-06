@@ -69,3 +69,13 @@ function validateInput(inputElement, regex) {
         inputElement.style.border = ''
     }
 }
+
+
+let a = document.querySelector('#name')
+a.onkeyup = () => {
+if ( /^[A-Za-z]+$/.test(a.value)) {
+    a.parentElement.classList.remove('error-field')
+} else {
+    a.parentElement.classList.add('error-field')
+}
+}
