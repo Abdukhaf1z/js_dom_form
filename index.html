@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
         * {
@@ -11,7 +14,9 @@
             margin: 0px;
             box-sizing: border-box;
             outline: none;
+            font-family: 'Diphylleia', serif;
         }
+
         form {
             width: fit-content;
             margin: 0 auto;
@@ -19,29 +24,36 @@
             flex-direction: column;
             gap: 20px;
         }
+
         form .input-group {
             display: flex;
             flex-direction: column;
             gap: 5px;
         }
+
         form .input-group input {
-            padding: 6px 10px;    
+            padding: 6px 10px;
             border: 1px solid #c4c4c4;
-            border-radius: 12px;
+            border-radius: 4px;
         }
-        .required  {
+
+        .required {
             color: blue !important;
         }
+
         .required input {
             border-color: blue !important;
         }
+
         .error-field {
             position: relative;
             color: red !important;
         }
+
         .error-field input {
             border-color: red !important;
         }
+
         .error-field::after {
             content: "";
             display: block;
@@ -55,98 +67,208 @@
             top: 26px;
             right: -25px;
         }
-        .box{
+
+        .box {
             display: flex;
             gap: 29px;
             margin-top: 30px;
+        }
+
+        .head h1 {
+            text-align: center;
+            color: #000;
+            font-family: Inter;
+            font-size: 46px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .head2 {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .button-86 {
+
+            all: unset;
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            position: relative;
+            color: #f0f0f0;
+            cursor: pointer;
+            z-index: 1;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-86::after,
+        .button-86::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: -99999;
+            transition: all .4s;
+        }
+
+        .button-86::before {
+            transform: translate(0%, 0%);
+            width: 100%;
+            height: 100%;
+            background: #28282d;
+            border-radius: 10px;
+        }
+
+        .button-86::after {
+            transform: translate(10px, 10px);
+            width: 35px;
+            height: 35px;
+            background: #ffffff15;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 50px;
+        }
+
+        .button-86:hover::before {
+            transform: translate(5%, 20%);
+            width: 110%;
+            height: 110%;
+        }
+
+        .button-86:hover::after {
+            border-radius: 10px;
+            transform: translate(0, 0);
+            width: 100%;
+            height: 100%;
+        }
+
+        .button-86:active::after {
+            transition: 0s;
+            transform: translate(0, 5%);
+        }
+
+        .btn {
+            padding-left: 165px;
+            padding-top: 20px;
         }
     </style>
 </head>
 
 <body>
 
-    <form name="login" >
+    <div class="head">
+        <h1>Example form</h1>
+    </div>
+    <div class="head2">
+        <p>All: 15</p>
+        <p>Need: 12</p>
+        <p class="success">Success: <span>0</span>/12</p>
+        <p class="eror">Error: <span>0</span>/7</p>
+    </div>
+
+
+    <form name="login">
         <div class="box">
 
-        
-        <div class="box1">
 
-        
-        <div class="input-group required" >
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" >
-            <span>Need to Fill</span>
+            <div class="box1">
+
+                <div class="input-group required">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" onkeyup="validateInput(this, /^[A-Za-z]+$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="Surname">Surname</label>
+                    <input type="text" id="age" name="Surname" onkeyup="validateInput(this, /^[A-Za-z]+$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group required">
+                    <label for="Email">Email address</label>
+                    <input type="email" id="email" name="Email"
+                        onkeyup="validateInput(this, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="Phone">Phone number</label>
+                    <input placeholder="+998" type="text" id="phone" name="Phone"
+                        onkeyup="validateInput(this, /^\d{9}$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="Mom’s">Your Mom’s name</label>
+                    <input type="text" id="momsName" name="Mom’s" onkeyup="validateInput(this, /^[A-Za-z]+$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="Pap’s">Your Pap’s name</label>
+                    <input type="text" id="papsName" name="Pap’s" onkeyup="validateInput(this, /^[A-Za-z]+$/)">
+                    <span>Need to Fill</span>
+                </div>
+            </div>
+
+            <div class="box2">
+                <div class="input-group required">
+                    <label for="Age">Age</label>
+                    <input type="number" id="age" name="Age" onkeyup="validateInput(this, /^\d+$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group required">
+                    <label for="About You">About You</label>
+                    <input type="text" id="aboutYou" name="About You" onkeyup="validateInput(this, /^.{1,50}$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group required">
+                    <label for="JavaScript">What is JavaScript?</label>
+                    <input type="text" id="javascript" name="JavaScript" onkeyup="validateInput(this, /^.{1,100}$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group required">
+                    <label for="HTML">What is HTML?</label>
+                    <input type="text" id="html" name="HTML" onkeyup="validateInput(this, /^.{1,100}$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group required">
+                    <label for="CSS">What is CSS?</label>
+                    <input type="text" id="css" name="CSS" onkeyup="validateInput(this, /^.{1,100}$/)">
+                    <span>Need to Fill</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="car">Your favorite car</label>
+                    <input type="text" id="car" name="car" onkeyup="validateInput(this, /^[A-Za-z0-9\s]+$/)">
+                    <span>Need to Fill</span>
+                </div>
+            </div>
         </div>
 
-        <div class="input-group" >
-            <label for="age">Surname</label>
-            <input type="text" id="age" name="age" >
-            <span>Need to Fill</span>
+        <div class="btn">
+
+            <button class="button-86" role="button">Submit</button>
         </div>
 
-        <div class="input-group required" >
-            <label for="name">Email adress</label>
-            <input type="email" id="name" name="name" >
-            <span>Need to Fill</span>
-        </div>
 
-        <div class="input-group" >
-            <label for="age">Phone number</label>
-            <input type="number" id="age" name="age" >
-            <span>Need to Fill</span>
-        </div>
-
-        <div class="input-group" >
-            <label for="age">Your Mom’s name</label>
-            <input type="text" id="age" name="age" >
-            <span>Need to Fill</span>
-        </div>
-
-        <div class="input-group" >
-            <label for="age">Your Pap’s name</label>
-            <input type="text" id="age" name="age" >
-            <span>Need to Fill</span>
-        </div>
-    </div>
-    <div class="box2">
-        <div class="input-group required" >
-            <label for="name">Age</label>
-            <input type="number" id="name" name="name" >
-            <span>Need to Fill</span>
-        </div>
-
-        <div class="input-group required" >
-            <label for="name">About You</label>
-            <input type="text" id="name" name="name" >
-            <span>Need to Fill</span>
-        </div>
-
-        <div class="input-group required" >
-            <label for="name">What is JavaScript?</label>
-            <input type="text" id="name" name="name" >
-            <span>Need to Fill</span>
-        </div>
-
-        <div class="input-group required" >
-            <label for="name">What is HTML?</label>
-            <input type="text" id="name" name="name" >
-            <span>Need to Fill</span>
-        </div>
-
-        <div class="input-group required" >
-            <label for="name">What is CSS?</label>
-            <input type="text" id="name" name="name" >
-            <span>Need to Fill</span>
-        </div>
-
-        <div class="input-group" >
-            <label for="age">Your favourite car</label>
-            <input type="number" id="age" name="age" >
-            <span>Need to Fill</span>
-        </div>
-    </div>
-</div>
-        <button>submit</button>
     </form>
 
     <script src="./index.js"></script>
